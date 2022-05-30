@@ -36,14 +36,14 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\AirConsole\scripts\editor\Inspector.cs" />
-     <Compile Include="Assets\AirConsole\plugins\Editor\UnityWebViewPostprocessBuild.cs" />
+     <Compile Include="Assets\AirConsole\scripts\editor\PostBuildProcess.cs" />
+     <Compile Include="Assets\Editor\PreBuildProcessing.cs" />
      <Compile Include="Assets\AirConsole\scripts\editor\Extentions.cs" />
      <Compile Include="Assets\AirConsole\scripts\editor\WebListener.cs" />
-     <Compile Include="Assets\AirConsole\scripts\editor\PlayMode.cs" />
-     <Compile Include="Assets\AirConsole\scripts\editor\PostBuildProcess.cs" />
+     <Compile Include="Assets\AirConsole\plugins\Editor\UnityWebViewPostprocessBuild.cs" />
      <Compile Include="Assets\AirConsole\scripts\editor\SettingWindow.cs" />
-     <Compile Include="Assets\Editor\PreBuildProcessing.cs" />
+     <Compile Include="Assets\AirConsole\scripts\editor\PlayMode.cs" />
+     <Compile Include="Assets\AirConsole\scripts\editor\Inspector.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.33f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
@@ -275,41 +275,41 @@
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.33f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Plastic.Newtonsoft.Json">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Plastic.Antlr3.Runtime">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="unityplastic">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
-    </Reference>
-    <Reference Include="log4netPlastic">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Library\PackageCache\com.unity.analytics@3.3.5\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.Editor">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Library\PackageCache\com.unity.analytics@3.3.5\Unity.Analytics.Editor.dll</HintPath>
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Library\PackageCache\com.unity.analytics@3.3.5\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Library\PackageCache\com.unity.ads@3.4.5\Editor\UnityEditor.Advertisements.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.Tracker">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Library\PackageCache\com.unity.analytics@3.3.5\Unity.Analytics.Tracker.dll</HintPath>
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Library\PackageCache\com.unity.ads@3.4.5\Editor\UnityEditor.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Library\PackageCache\com.unity.purchasing@2.0.6\Editor\UnityEditor.Purchasing.dll</HintPath>
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Library\PackageCache\com.unity.purchasing@2.0.6\Editor\UnityEditor.Purchasing.dll</HintPath>
     </Reference>
-    <Reference Include="websocket-sharp">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Assets\AirConsole\plugins\websocket-sharp.dll</HintPath>
+    <Reference Include="log4netPlastic">
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Plastic.Newtonsoft.Json">
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.Editor">
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Library\PackageCache\com.unity.analytics@3.3.5\Unity.Analytics.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Plastic.Antlr3.Runtime">
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="unityplastic">
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Assets\AirConsole\plugins\Newtonsoft.Json.dll</HintPath>
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Assets\AirConsole\plugins\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.Tracker">
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Library\PackageCache\com.unity.analytics@3.3.5\Unity.Analytics.Tracker.dll</HintPath>
+    </Reference>
+    <Reference Include="websocket-sharp">
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Assets\AirConsole\plugins\websocket-sharp.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.33f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\mscorlib.dll</HintPath>
@@ -660,64 +660,64 @@
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.33f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XPath.XDocument.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TestRunner">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.TestRunner">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualStudio.Editor">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline.Editor">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.UI">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.PlasticSCM.Editor">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Rider.Editor">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Monetization">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Library\ScriptAssemblies\UnityEngine.Monetization.dll</HintPath>
-    </Reference>
-    <Reference Include="com.unity.multiplayer-hlapi.Editor">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Library\ScriptAssemblies\com.unity.multiplayer-hlapi.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Library\ScriptAssemblies\UnityEngine.Advertisements.dll</HintPath>
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Analytics.DataPrivacy">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll</HintPath>
+    <Reference Include="com.unity.multiplayer-hlapi.Editor">
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Library\ScriptAssemblies\com.unity.multiplayer-hlapi.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="com.unity.multiplayer-hlapi.Runtime">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Library\ScriptAssemblies\com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
+    <Reference Include="Unity.TextMeshPro.Editor">
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualStudio.Editor">
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline.Editor">
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline">
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Monetization">
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Library\ScriptAssemblies\UnityEngine.Monetization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Library\ScriptAssemblies\UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.PlasticSCM.Editor">
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Rider.Editor">
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-weaver.Editor">
-        <HintPath>D:\Unity-Projekte\AirConsoleTest\Library\ScriptAssemblies\com.unity.multiplayer-weaver.Editor.dll</HintPath>
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Library\ScriptAssemblies\com.unity.multiplayer-weaver.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.DataPrivacy">
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.multiplayer-hlapi.Runtime">
+        <HintPath>C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest\Library\ScriptAssemblies\com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
