@@ -21,6 +21,8 @@ public class GyroscopeExampleLogic : MonoBehaviour {
 
 	public GameObject playerCube;
 
+	private Rigidbody rb;
+
 	void Awake () {
 		AirConsole.instance.onMessage += OnMessage;		
 	}
@@ -48,6 +50,8 @@ public class GyroscopeExampleLogic : MonoBehaviour {
 //test end
 					//Vector3 abgAngles = new Vector3 (-(float)data ["motion_data"] ["beta"], -(float)data ["motion_data"] ["alpha"], -(float)data ["motion_data"] ["gamma"]);
 					//Abfrage ob Schwellenwert für rechts, links, vorne, hinten errreicht ist.
+
+//if abfragen die halbwegs laufen 					
 					if(-(float)data ["motion_data"] ["beta"] > -80 && -(float)data ["motion_data"] ["beta"] < 0){
 						vorne = new Vector3 (0, 0, movementSpeed);
 						playerCube.transform.Translate (vorne);
@@ -65,7 +69,22 @@ public class GyroscopeExampleLogic : MonoBehaviour {
 					if(-(float)data ["motion_data"] ["gamma"] < -5 && -(float)data ["motion_data"] ["gamma"] > -80){
 						rechts = new Vector3 (movementSpeed, 0, 0);
 						playerCube.transform.Translate (rechts);
-					}
+				}
+ 
+//if abfragen Ende
+/*
+				Quaternion deviceRotation = Quaternion.Euler (-(float)data ["motion_data"] ["alpha"], -(float)data ["motion_data"] ["beta"], -(float)data ["motion_data"] ["gamma"]);
+
+				transform.rotation = deviceRotation;
+				rb.AddForce (transform.forward * movementSpeed, ForceMode.Acceleration);
+				rb.velocity = Vector3.ClampMagnitude (rb.velocity, 10);
+				
+*/
+				
+
+//test Timo Video
+
+				
 
 					Debug.Log("motion data alpha" + -(float)data ["motion_data"] ["alpha"] + " beta" + -(float)data ["motion_data"] ["beta"] + " gamma: " + -(float)data ["motion_data"] ["gamma"] + "Time.deltaTime " + Time.deltaTime);
 				}
