@@ -148,7 +148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 347505005}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.4, y: 2.9000006, z: 23.2}
+  m_LocalPosition: {x: 27.4, y: 3.09, z: 23.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material1: {fileID: 2100000, guid: aa6689c77b3e42846af7e3e86a70f028, type: 2}
   material2: {fileID: 2100000, guid: 34048cff10799c749af6cefe26fe9053, type: 2}
-  playerCube: {fileID: 2075395844}
+  playerCube: {fileID: 963194225}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,7 +565,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2075395844}
   m_LocalRotation: {x: 0.017891191, y: -0, z: -0, w: 0.99983996}
-  m_LocalPosition: {x: 27.4, y: 2.04, z: 23.2}
+  m_LocalPosition: {x: 26.3, y: 2.27, z: 16.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

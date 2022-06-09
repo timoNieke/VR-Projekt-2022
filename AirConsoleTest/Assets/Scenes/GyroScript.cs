@@ -9,7 +9,7 @@ public class GyroScript : MonoBehaviour {
 	public Material material1;
 	public Material material2;
 	private bool materialToggle;
-	private float movementSpeed = 0.5f;
+	private float movementSpeed = 0.1f;
 	private float rotationSpeed = 10F;
 	
 	
@@ -44,19 +44,19 @@ public class GyroScript : MonoBehaviour {
 //Movement
 					if (abgAngles.x > 10) {
 						vorne = new Vector3 (0, 0, 1);
-						playerCube.transform.Translate (vorne * movementSpeed);
+						playerCube.transform.Translate (vorne * movementSpeed*abgAngles.x);
 					}
 					if (abgAngles.x < -10) {
 						hinten = new Vector3 (0, 0, -1);
-						playerCube.transform.Translate (hinten * movementSpeed);
+						playerCube.transform.Translate (hinten * movementSpeed*(-abgAngles.x));
 					}
 					if (abgAngles.y > 10) {
 						rechts = new Vector3 (1, 0, 0);
-						playerCube.transform.Translate (rechts * movementSpeed);
+						playerCube.transform.Translate (rechts * movementSpeed*abgAngles.y);
 					}
 					if (abgAngles.y < -10) {
 						links = new Vector3 (-1, 0, 0);
-						playerCube.transform.Translate (links * movementSpeed);
+						playerCube.transform.Translate (links * movementSpeed*-abgAngles.y);
 					}
 
 
