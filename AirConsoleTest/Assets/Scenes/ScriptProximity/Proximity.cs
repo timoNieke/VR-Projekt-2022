@@ -4,17 +4,34 @@ using UnityEngine;
 
 public class Proximity : MonoBehaviour
 {
-    Collider[] InsideZone;
+    public GameObject Treasure;
+    public GameObject Player;
+    public float Kalt = 45.0f;
+    public float Warm = 25.0f;
+    public float Hot = 8.0f;
 
-    private void fixedUpdate()
+
+
+    void Start()
     {
-        InsideZone = Physics.OverlapSphere(transform.position, 10f);
-        foreach (Collider collider in InsideZone)
+        Treasure = GameObject.FindWithTag("Treasure");
+        Player = GameObject.FindWithTag("Player");
+    }
+
+    void Update()
+    {
+        if(Vector3.Distance(Player.transform.position, Treasure.transform.position) < Kalt && Vector3.Distance(Player.transform.position, Treasure.transform.position) > Warm)
         {
-            if (collider.tag == "Player")
-            {
-                Debug.Log("Player is in the zone");
-            }
+            Debug.Log("Kalt");
         }
+        else if(Vector3.Distance(Player.transform.position, Treasure.transform.position) < Warm && Vector3.Distance(Player.transform.position, Treasure.transform.position) > Hot)
+        {
+            Debug.Log("Warm");
+        }
+        else if(Vector3.Distance(Player.transform.position, Treasure.transform.position) < Hot)
+        {
+            Debug.Log("Hot");
+        }
+ 
     }
 }

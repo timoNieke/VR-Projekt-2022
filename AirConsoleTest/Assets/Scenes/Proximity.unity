@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 23584252}
   - component: {fileID: 23584251}
   - component: {fileID: 23584253}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstPersonPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -226,6 +226,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fd043de97d93534ab2c0cd14ad7570f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Treasure: {fileID: 0}
+  Player: {fileID: 0}
+  Kalt: 45
+  Warm: 25
+  Hot: 8
 --- !u!4 &128179060
 Transform:
   m_ObjectHideFlags: 0
@@ -252,7 +257,7 @@ GameObject:
   - component: {fileID: 279100349}
   - component: {fileID: 279100351}
   - component: {fileID: 279100350}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -437,7 +442,7 @@ GameObject:
   - component: {fileID: 612380469}
   m_Layer: 0
   m_Name: Treasure
-  m_TagString: Untagged
+  m_TagString: Treasure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -533,6 +538,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fd043de97d93534ab2c0cd14ad7570f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Treasure: {fileID: 612380464}
+  Player: {fileID: 568246821}
+  Kalt: 45
+  Warm: 25
+  Hot: 8
 --- !u!1 &793044046
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,7 +552,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 793044047}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -576,7 +586,7 @@ GameObject:
   - component: {fileID: 1168038688}
   - component: {fileID: 1168038687}
   - component: {fileID: 1168038690}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
