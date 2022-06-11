@@ -60,8 +60,6 @@ public class GyroScript : MonoBehaviour {
 					}
 
 
-
-
 //Working rotation
 /*					playerCube.transform.eulerAngles = abgAngles;
 					Debug.Log ("abgAngles " + abgAngles);
