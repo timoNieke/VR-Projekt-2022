@@ -10,7 +10,7 @@ public class GyroScript : MonoBehaviour {
 	public Material material2;
 	private bool materialToggle;
 	private float movementSpeed = 0.05f;
-	private float rotationSpeed = 10F;
+	private float rotationSpeed = 0.2f;
 	
 	
 	private Vector3 vorne;
@@ -31,7 +31,7 @@ public class GyroScript : MonoBehaviour {
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
     bool isGrounded;
-
+	bool cameraIsActive = false;
 	void Awake () {
 		AirConsole.instance.onMessage += OnMessage;
 	}
@@ -57,7 +57,8 @@ public class GyroScript : MonoBehaviour {
 
 					Vector3 abgAngles = new Vector3 (-(float)data ["motion_data"] ["beta"], -(float)data ["motion_data"] ["alpha"], -(float)data ["motion_data"] ["gamma"]);
 					Debug.Log ("abgAngles.x: " + abgAngles.x + "abgAngles.y: " + abgAngles.y + "abgAngles.z: " + abgAngles.z);
-//Movement
+//Movement			
+					if(cameraIsActive == false){
 					if (abgAngles.x > 10) {
 						vorne = new Vector3 (0, 0, 1);
 						playerCube.transform.Translate (vorne * movementSpeed*abgAngles.x);
@@ -73,6 +74,16 @@ public class GyroScript : MonoBehaviour {
 					if (abgAngles.y < -10) {
 						links = new Vector3 (-1, 0, 0);
 						playerCube.transform.Translate (links * movementSpeed*-abgAngles.y);
+					}
+					} else {
+						if (abgAngles.y < -10) {
+							playerCube.transform.Rotate(new Vector3(0,abgAngles.y * rotationSpeed,0), Space.Self);
+						}
+						if (abgAngles.y > 10){
+							playerCube.transform.Rotate(new Vector3(0,abgAngles.y * rotationSpeed,0), Space.Self);
+						}
+						
+							
 					}
 
 
@@ -97,6 +108,14 @@ public class GyroScript : MonoBehaviour {
 				playerCube.GetComponent<Renderer> ().materials = new Material[]{ material2 };
 				materialToggle = true;
 			}
+			break;
+		case "active-camera":
+			if (cameraIsActive == true){
+				cameraIsActive = false;
+			} else {
+				cameraIsActive = true;
+			}
+			//playerCube.transform.Rotate(new Vector3(0,-(float)data ["motion_data"] ["alpha"] * rotationSpeed,0), Space.Self);
 			break;
 		default:
 			Debug.Log (data);
