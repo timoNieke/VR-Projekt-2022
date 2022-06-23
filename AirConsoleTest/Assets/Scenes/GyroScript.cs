@@ -17,9 +17,11 @@ public class GyroScript : MonoBehaviour {
 	private Vector3 hinten;
 	private Vector3 links;
 	private Vector3 rechts;
+	private Vector3 unten;
 
 
 	public GameObject playerCube;
+	public CharacterController controller;
 
 	private Rigidbody rb;
 
@@ -43,13 +45,7 @@ public class GyroScript : MonoBehaviour {
 
 		switch (data ["action"].ToString ()) {
 		case "motion":
-			
-			isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
-        		if (isGrounded && velocity.y < 0)
-        		{
-            		velocity.y = -2f;
-        		}		
+        			
 
 			if (data ["motion_data"] != null) {
 
@@ -57,7 +53,22 @@ public class GyroScript : MonoBehaviour {
 
 					Vector3 abgAngles = new Vector3 (-(float)data ["motion_data"] ["beta"], -(float)data ["motion_data"] ["alpha"], -(float)data ["motion_data"] ["gamma"]);
 					Debug.Log ("abgAngles.x: " + abgAngles.x + "abgAngles.y: " + abgAngles.y + "abgAngles.z: " + abgAngles.z);
-//Movement
+//Movement			
+					isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+					if (isGrounded && velocity.y < 0)
+        			{
+            			velocity.y = -2f;
+        			}
+
+					float x = Input.GetAxis("Horizontal");
+        			float z = Input.GetAxis("Vertical");
+		//START
+					var rigidbody = GetComponent < Rigidbody > ();
+
+					rigidbody.velocity = new Vector3(abgAngles.y * 0.5f, rigidbody.velocity.y, abgAngles.x * 0.5f);
+
+		//END
+				/*		
 					if (abgAngles.x > 10) {
 						vorne = new Vector3 (0, 0, 1);
 						playerCube.transform.Translate (vorne * movementSpeed*abgAngles.x);
@@ -75,6 +86,9 @@ public class GyroScript : MonoBehaviour {
 						playerCube.transform.Translate (links * movementSpeed*-abgAngles.y);
 					}
 
+					velocity.y += gravity * Time.deltaTime;
+        			controller.Move(velocity * Time.deltaTime);
+*/
 
 //Working rotation
 /*					playerCube.transform.eulerAngles = abgAngles;
