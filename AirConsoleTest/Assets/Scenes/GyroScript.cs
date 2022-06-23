@@ -9,7 +9,7 @@ public class GyroScript : MonoBehaviour {
 	public Material material1;
 	public Material material2;
 	private bool materialToggle;
-	private float movementSpeed = 0.1f;
+	private float movementSpeed = 0.05f;
 	private float rotationSpeed = 10F;
 	
 	
@@ -23,17 +23,33 @@ public class GyroScript : MonoBehaviour {
 
 	private Rigidbody rb;
 
+	//Working on Gravity
+	Vector3 velocity;
+    public float gravity = -9.81f;
+
+    public Transform groundCheck;
+    public float groundDistance = 0.4f;
+    public LayerMask groundMask;
+    bool isGrounded;
+
 	void Awake () {
-		AirConsole.instance.onMessage += OnMessage;		
+		AirConsole.instance.onMessage += OnMessage;
 	}
 
 	void OnMessage (int from, JToken data){
 		
 		//Debug.Log ("message from device " + from + ", data: " + data); 
+		//falling down
 
 		switch (data ["action"].ToString ()) {
 		case "motion":
 			
+			isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+        		if (isGrounded && velocity.y < 0)
+        		{
+            		velocity.y = -2f;
+        		}		
 
 			if (data ["motion_data"] != null) {
 
@@ -87,6 +103,7 @@ public class GyroScript : MonoBehaviour {
 			break;
 		}
 	}
+
 
 	void OnDestroy () {
 		if (AirConsole.instance != null) {
