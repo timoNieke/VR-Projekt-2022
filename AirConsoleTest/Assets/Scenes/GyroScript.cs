@@ -10,7 +10,7 @@ public class GyroScript : MonoBehaviour {
 	public Material material2;
 	private bool materialToggle;
 	private float movementSpeed = 0.05f;
-	private float rotationSpeed = 10F;
+	private float rotationSpeed = 0.2f;
 	
 	
 	private Vector3 vorne;
@@ -33,7 +33,7 @@ public class GyroScript : MonoBehaviour {
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
     bool isGrounded;
-
+	bool cameraIsActive = false;
 	void Awake () {
 		AirConsole.instance.onMessage += OnMessage;
 	}
@@ -62,12 +62,19 @@ public class GyroScript : MonoBehaviour {
 
 					float x = Input.GetAxis("Horizontal");
         			float z = Input.GetAxis("Vertical");
-		//START
 					var rigidbody = GetComponent < Rigidbody > ();
-
-					rigidbody.velocity = new Vector3(abgAngles.y * 0.5f, rigidbody.velocity.y, abgAngles.x * 0.5f);
-
-		//END
+					if(cameraIsActive == false){
+						rigidbody.velocity = new Vector3(abgAngles.y * 0.5f, rigidbody.velocity.y, abgAngles.x * 0.5f);
+					} else {
+						if (abgAngles.y < -10) {
+							playerCube.transform.Rotate(new Vector3(0,abgAngles.y * rotationSpeed,0), Space.Self);
+						}
+						if (abgAngles.y > 10){
+							playerCube.transform.Rotate(new Vector3(0,abgAngles.y * rotationSpeed,0), Space.Self);
+						}
+						
+							
+					}
 				/*		
 					if (abgAngles.x > 10) {
 						vorne = new Vector3 (0, 0, 1);
@@ -84,6 +91,16 @@ public class GyroScript : MonoBehaviour {
 					if (abgAngles.y < -10) {
 						links = new Vector3 (-1, 0, 0);
 						playerCube.transform.Translate (links * movementSpeed*-abgAngles.y);
+					}
+					} else {
+						if (abgAngles.y < -10) {
+							playerCube.transform.Rotate(new Vector3(0,abgAngles.y * rotationSpeed,0), Space.Self);
+						}
+						if (abgAngles.y > 10){
+							playerCube.transform.Rotate(new Vector3(0,abgAngles.y * rotationSpeed,0), Space.Self);
+						}
+						
+							
 					}
 
 					velocity.y += gravity * Time.deltaTime;
@@ -111,6 +128,14 @@ public class GyroScript : MonoBehaviour {
 				playerCube.GetComponent<Renderer> ().materials = new Material[]{ material2 };
 				materialToggle = true;
 			}
+			break;
+		case "active-camera":
+			if (cameraIsActive == true){
+				cameraIsActive = false;
+			} else {
+				cameraIsActive = true;
+			}
+			//playerCube.transform.Rotate(new Vector3(0,-(float)data ["motion_data"] ["alpha"] * rotationSpeed,0), Space.Self);
 			break;
 		default:
 			Debug.Log (data);

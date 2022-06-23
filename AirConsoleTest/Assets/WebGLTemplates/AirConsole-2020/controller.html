@@ -331,6 +331,12 @@
          this.airconsole.message(AirConsole.SCREEN, msg);
       };
     
+      App.prototype.activateCameraButton = function(msg) {
+      this.airconsole.message(AirConsole.SCREEN, {"action": "active-camera"});
+    };
+    App.prototype.deactivateCameraButton = function(msg) {
+      this.airconsole.message(AirConsole.SCREEN, {"action": "deactive-camera"});
+    };
       </script>
      
     </head>
@@ -338,7 +344,7 @@
       <div style="margin-top:50px">
         <div class="button" ontouchstart="window.app.calibrateButton()">Calibrate</div>
   
-        <div class="button" ontouchstart="window.app.sendMessageToScreen('Camera is ON')" ontouchend="window.app.sendMessageToScreen('Camera is OFF')">Camera</div>
+        <div class="button" ontouchstart="window.app.activateCameraButton()" ontouchend="window.app.activateCameraButton()">Camera</div>
       
       </div>
    
