@@ -19,9 +19,14 @@ public class GyroScript : MonoBehaviour {
 	private Vector3 rechts;
 	private Vector3 unten;
 
+	//jumping
+	public float jumpForce;
+
 
 	public GameObject playerCube;
 	public CharacterController controller;
+
+	Vector3 abgAngles; 
 
 	private Rigidbody rb;
 
@@ -54,86 +59,27 @@ public class GyroScript : MonoBehaviour {
 
 				if (data ["motion_data"] ["x"].ToString() != "") {
 
-					Vector3 abgAngles = new Vector3 (-(float)data ["motion_data"] ["beta"], -(float)data ["motion_data"] ["alpha"], -(float)data ["motion_data"] ["gamma"]);
+					abgAngles = new Vector3 (-(float)data ["motion_data"] ["beta"], -(float)data ["motion_data"] ["alpha"], -(float)data ["motion_data"] ["gamma"]);
 					Debug.Log ("abgAngles.x: " + abgAngles.x + "abgAngles.y: " + abgAngles.y + "abgAngles.z: " + abgAngles.z);
-//Movement			
-					isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-					if (isGrounded && velocity.y < 0)
-        			{
-            			velocity.y = -2f;
-        			}
-
-					float x = Input.GetAxis("Horizontal");
-        			float z = Input.GetAxis("Vertical");
-					/*if(cameraIsActive == false){
-						rb.velocity = new Vector3(abgAngles.y * 0.5f, rb.velocity.y, abgAngles.x * 0.5f);
-					} else {
-						if (abgAngles.y < -10) {
-							playerCube.transform.Rotate(new Vector3(0,abgAngles.y * rotationSpeed,0), Space.World);
-						}
-						if (abgAngles.y > 10){
-							//make a localRotation on playerCube
-							playerCube.transform.Rotate(new Vector3(0,abgAngles.y * rotationSpeed,0), Space.World);
-						}
-
-						
-							
-					}*/
-					if (cameraIsActive == false) {	
-					if (abgAngles.x > 10) {
-						vorne = new Vector3 (0, 0, 1);
-						playerCube.transform.Translate (vorne * movementSpeed*abgAngles.x* Time.deltaTime);
-					}
-					if (abgAngles.x < -10) {
-						hinten = new Vector3 (0, 0, -1);
-						playerCube.transform.Translate (hinten * movementSpeed*(-abgAngles.x)* Time.deltaTime);
-					}
-					if (abgAngles.y > 10) {
-						rechts = new Vector3 (1, 0, 0);
-						playerCube.transform.Translate (rechts * movementSpeed*abgAngles.y* Time.deltaTime);
-					}
-					if (abgAngles.y < -10) {
-						links = new Vector3 (-1, 0, 0);
-						playerCube.transform.Translate (links * movementSpeed*-abgAngles.y* Time.deltaTime);
-					}
-					} else {
-						if (abgAngles.y < -10) {
-							playerCube.transform.Rotate(new Vector3(0,abgAngles.y * rotationSpeed,0), Space.Self);
-						}
-						if (abgAngles.y > 10){
-							playerCube.transform.Rotate(new Vector3(0,abgAngles.y * rotationSpeed,0), Space.Self);
-						}
-						
-							
-					}
 
 					//velocity.y += gravity * Time.deltaTime;
         			//controller.Move(velocity * Time.deltaTime);
-
-
-//Working rotation
-/*					playerCube.transform.eulerAngles = abgAngles;
-					Debug.Log ("abgAngles " + abgAngles);
-
-
-					Debug.Log ("myRotation " + playerCube.transform.eulerAngles);
-*/					//Debug.Log("motion data alpha" + -(float)data ["motion_data"] ["alpha"] + " beta" + -(float)data ["motion_data"] ["beta"] + " gamma: " + -(float)data ["motion_data"] ["gamma"] + "Time.deltaTime " + Time.deltaTime);
-//end of block comment
 				}
 			}
 
 			break;
 		case "shake":
-			//rigidbody jumps
-			//velocity.y = jumpForce;
-			//the cube changes color on shake
-			/*if (materialToggle) {
-				playerCube.GetComponent<Renderer> ().materials = new Material[]{ material1 };
-				materialToggle = false;
-			} else {
-				playerCube.GetComponent<Renderer> ().materials = new Material[]{ material2 };
-				materialToggle = true;
-			}*/
+			//rb.velocity = rb.velocity + new Vector3 (0, jumpForce, 0);
+			if (isGrounded) {
+				//rb.AddForce (new Vector3 (0, jumpForce, 0), ForceMode.Impulse);
+				rb.AddForce (Vector3.up * jumpForce, ForceMode.Impulse);
+			}else{
+
+			}
+			
+			//i love it 
+			//rb.AddForce (Vector3.up * jumpForce, ForceMode.Impulse);
+
 			break;
 		case "active-camera":
 			if (cameraIsActive == true){
@@ -149,6 +95,38 @@ public class GyroScript : MonoBehaviour {
 		}
 	}
 
+	void Update(){
+
+		isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+	
+		//Movement								
+			if (cameraIsActive == false) {	
+				if (abgAngles.x > 10) {
+					vorne = new Vector3 (0, 0, 1);
+					playerCube.transform.Translate (vorne * movementSpeed*abgAngles.x* Time.deltaTime);
+				}
+				if (abgAngles.x < -10) {
+					hinten = new Vector3 (0, 0, -1);
+					playerCube.transform.Translate (hinten * movementSpeed*(-abgAngles.x)* Time.deltaTime);
+				}
+				if (abgAngles.y > 10) {
+					rechts = new Vector3 (1, 0, 0);
+					playerCube.transform.Translate (rechts * movementSpeed*abgAngles.y* Time.deltaTime);
+				}
+				if (abgAngles.y < -10) {
+					links = new Vector3 (-1, 0, 0);
+					playerCube.transform.Translate (links * movementSpeed*-abgAngles.y* Time.deltaTime);
+				}
+			} else {
+				if (abgAngles.y < -10) {
+					playerCube.transform.Rotate(new Vector3(0,abgAngles.y * rotationSpeed * Time.deltaTime ,0), Space.Self);
+				}
+				if (abgAngles.y > 10){
+					playerCube.transform.Rotate(new Vector3(0,abgAngles.y * rotationSpeed * Time.deltaTime ,0), Space.Self);
+				}								
+			}
+			
+	}
 
 	void OnDestroy () {
 		if (AirConsole.instance != null) {
