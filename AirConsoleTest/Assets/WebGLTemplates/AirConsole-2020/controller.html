@@ -246,7 +246,31 @@
           me.last_motion_event = {alpha:0, beta: 0, gamma: 0};
     
           me.airconsole.onMessage = function(from, data) {
-            console.log("onMessage", from, data);
+            //me.airconsole.vibrate(5000);
+            if (data["action"] == "vibrate_cold") {
+              me.airconsole.vibrate(500)
+            }
+            if (data["action"] == "vibrate_warm") {
+              me.airconsole.vibrate(400)
+              
+              // wait for a second before vibrating again
+              setTimeout(function() {
+                me.airconsole.vibrate(400)
+              }, 500);
+            }
+            if (data["action"] == "vibrate_hot") {
+              me.airconsole.vibrate(300)
+              
+              // wait for a second before vibrating again
+              setTimeout(function() {
+                me.airconsole.vibrate(400)
+              }, 350);
+                            // wait for a second before vibrating again
+                            setTimeout(function() {
+                me.airconsole.vibrate(400)
+              }, 450);
+
+            }
           };
           
           me.airconsole.onReady = function(code) {
@@ -337,16 +361,19 @@
     App.prototype.deactivateCameraButton = function(msg) {
       this.airconsole.message(AirConsole.SCREEN, {"action": "deactive-camera"});
     };
+
+    App.prototype.vibrate = function(msg) {
+      //this.airconsole.vibrate(500);
+      this.airconsole.message(AirConsole.SCREEN, {"action": "vibrate"});
+    };
       </script>
      
     </head>
     <body onload="window.app = new App()">
-      <div style="margin-top:50px">
         <div class="button" ontouchstart="window.app.calibrateButton()">Calibrate</div>
-  
+        <div class="button" ontouchstart="window.app.vibrate()">Vibration</div>
         <div class="button" ontouchstart="window.app.activateCameraButton()" ontouchend="window.app.activateCameraButton()">Camera</div>
-      
-      </div>
+
    
     </body>
     </html>

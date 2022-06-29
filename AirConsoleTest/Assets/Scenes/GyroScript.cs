@@ -24,6 +24,7 @@ public class GyroScript : MonoBehaviour {
 
 
 	public GameObject playerCube;
+	public GameObject treasure;
 	public CharacterController controller;
 
 	Vector3 abgAngles; 
@@ -39,12 +40,20 @@ public class GyroScript : MonoBehaviour {
     public LayerMask groundMask;
     bool isGrounded;
 	bool cameraIsActive = false;
+	// create variable airconsole
+	public string treasureDistance;
+	public float distanceTreasurePlayer;
 
 	void Awake () {
 		AirConsole.instance.onMessage += OnMessage;
+		//access variable from gyroscope-controller.html
+		//find by gametag "treasure"
+		treasure = GameObject.FindGameObjectWithTag("Treasure");
+		InvokeRepeating ("vibrateMethode", 2f, 2f);
 	}
 
 	void OnMessage (int from, JToken data){
+
 		//add a rigidbody if it doesn't exist yet
 		if (rb == null) {
 			rb = playerCube.GetComponent<Rigidbody> ();
@@ -60,7 +69,7 @@ public class GyroScript : MonoBehaviour {
 				if (data ["motion_data"] ["x"].ToString() != "") {
 
 					abgAngles = new Vector3 (-(float)data ["motion_data"] ["beta"], -(float)data ["motion_data"] ["alpha"], -(float)data ["motion_data"] ["gamma"]);
-					Debug.Log ("abgAngles.x: " + abgAngles.x + "abgAngles.y: " + abgAngles.y + "abgAngles.z: " + abgAngles.z);
+					//Debug.Log ("abgAngles.x: " + abgAngles.x + "abgAngles.y: " + abgAngles.y + "abgAngles.z: " + abgAngles.z);
 
 					//velocity.y += gravity * Time.deltaTime;
         			//controller.Move(velocity * Time.deltaTime);
@@ -89,8 +98,21 @@ public class GyroScript : MonoBehaviour {
 			}
 			//playerCube.transform.Rotate(new Vector3(0,-(float)data ["motion_data"] ["alpha"] * rotationSpeed,0), Space.Self);
 			break;
+		case "vibrate":
+		var message = new {
+    action = "move"
+};
+			AirConsole.instance.Message(1, message);
+			break;
+		case "message":
+			Debug.Log("messagegegee");
+			break;
+		case "message2":
+			Debug.Log("adadadad");
+			break;
 		default:
 			Debug.Log (data);
+
 			break;
 		}
 	}
@@ -125,12 +147,59 @@ public class GyroScript : MonoBehaviour {
 					playerCube.transform.Rotate(new Vector3(0,abgAngles.y * rotationSpeed * Time.deltaTime ,0), Space.Self);
 				}								
 			}
-			
+			calculateDistance();
+
+
+
+
 	}
 
 	void OnDestroy () {
 		if (AirConsole.instance != null) {
 			AirConsole.instance.onMessage -= OnMessage;		
 		}
+	}
+
+	void vibrateMethode(){
+		if(treasureDistance == "cold"){
+		var message = new {
+    	action = "vibrate_cold"
+		};
+		AirConsole.instance.Message(1, message);
+		Debug.Log(message);
+		};
+		if (treasureDistance == "warm"){
+			var message = new {
+			action = "vibrate_warm"
+		};
+		AirConsole.instance.Message(1, message);
+		Debug.Log(message);
+		}
+		if (treasureDistance == "hot"){
+			var message = new {
+			action = "vibrate_hot"
+		};
+				AirConsole.instance.Message(1, message);
+						Debug.Log(message);
+		}
+		Debug.Log(treasureDistance);
+		Debug.Log(distanceTreasurePlayer);
+	}
+
+	// function to calculate the distance
+	void calculateDistance(){
+
+		distanceTreasurePlayer = Vector3.Distance (playerCube.transform.position, treasure.transform.position);
+
+		if (distanceTreasurePlayer <= 10) {
+			treasureDistance = "hot";
+		} 
+		else if (distanceTreasurePlayer < 30 && distanceTreasurePlayer > 10) {
+			treasureDistance = "warm";
+		}
+		else if (distanceTreasurePlayer > 30) {
+			treasureDistance = "cold";
+		}
+
 	}
 }
