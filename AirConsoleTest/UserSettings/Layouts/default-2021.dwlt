@@ -120,7 +120,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 5933
+  controlID: 131
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 5960
+  controlID: 109
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 5980
+  controlID: 69
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -642,7 +642,7 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 398.2345, y: 301.64728, z: 485.4408}
+    m_Target: {x: 98.95054, y: 121.69697, z: 32.00469}
     speed: 2
     m_Value: {x: 398.2345, y: 301.64728, z: 485.4408}
   m_RenderMode: 0
@@ -691,17 +691,17 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.598697, y: 0.017062731, z: -0.012766674, w: 0.80076295}
+    m_Target: {x: 0.09109652, y: 0.20932142, z: -0.019579822, w: 0.9734149}
     speed: 2
-    m_Value: {x: 0.5974613, y: 0.017080897, z: -0.012740337, w: 0.80161464}
+    m_Value: {x: -0.598697, y: -0.017062733, z: 0.012766674, w: -0.80076295}
   m_Size:
-    m_Target: 155.61967
+    m_Target: -0.0035475711
     speed: 2
-    m_Value: 148.91835
+    m_Value: 155.61967
   m_Ortho:
-    m_Target: 1
+    m_Target: 0
     speed: 2
-    m_Value: 1
+    m_Value: 0
   m_CameraSettings:
     m_Speed: 0.8259
     m_SpeedNormalized: 0.41
@@ -781,9 +781,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 2e720000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 907ffeffc6c6ffff8e910000
+      m_ExpandedIDs: 1efbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -848,22 +848,22 @@ MonoBehaviour:
     m_SkipHidden: 1
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes/ScriptProximity
+    - Assets
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes/ScriptProximity
+  - Assets
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\timko\Documents\GitHub\VR-Projekt-2022\AirConsoleTest
+  m_LastProjectPath: C:\Users\tmari\Desktop\Projekte\VR-Projekt-2022\AirConsoleTest
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ae930000
-    m_LastClickedID: 37806
-    m_ExpandedIDs: 0000000070930000729300008c9300009493000000ca9a3bffffff7f
+    m_SelectedIDs: 72610000
+    m_LastClickedID: 24946
+    m_ExpandedIDs: 00000000726100007461000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -891,7 +891,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000709300007293000000ca9a3bffffff7f
+    m_ExpandedIDs: 000000007261000074610000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -918,7 +918,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 16ab0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0

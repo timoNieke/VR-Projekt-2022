@@ -51,7 +51,7 @@ public class GyroScript : MonoBehaviour {
 		AirConsole.instance.onMessage += OnMessage;
 		//access variable from gyroscope-controller.html
 		//find by gametag "treasure"
-		treasure = GameObject.FindGameObjectWithTag("Treasure");
+
 		InvokeRepeating ("vibrateMethode", 3.3f, 3.3f);
 	
 	}
@@ -102,27 +102,13 @@ public class GyroScript : MonoBehaviour {
 			}
 			//playerCube.transform.Rotate(new Vector3(0,-(float)data ["motion_data"] ["alpha"] * rotationSpeed,0), Space.Self);
 			break;
-		case "vibrate":
-		var message = new {
-    action = "move"
-};
-			AirConsole.instance.Message(1, message);
-			break;
-		case "message":
-			Debug.Log("messagegegee");
-			break;
-		case "message2":
-			Debug.Log("adadadad");
-			break;
 		default:
-			Debug.Log (data);
-
 			break;
 		}
 	}
 
 	void Update(){
-
+		treasure = proximity.closestTreasure;
 		isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 	
 		//Movement								
@@ -151,7 +137,7 @@ public class GyroScript : MonoBehaviour {
 					playerCube.transform.Rotate(new Vector3(0,abgAngles.y * rotationSpeed * Time.deltaTime ,0), Space.Self);
 				}								
 			}
-			calculateDistance();
+			//calculateDistance();
 
 
 
@@ -186,13 +172,12 @@ public class GyroScript : MonoBehaviour {
 				AirConsole.instance.Message(1, message);
 				Debug.Log(message);
 		}
-		Debug.Log(treasureDistance);
-		Debug.Log(distanceTreasurePlayer);
+		//Debug.Log(treasureDistance);
+		//Debug.Log(distanceTreasurePlayer);
 	}
 
 	// function to calculate the distance
-	void calculateDistance(){
-
+	/*void calculateDistance(){
 		distanceTreasurePlayer = Vector3.Distance (playerCube.transform.position, treasure.transform.position);
 		if (distanceTreasurePlayer <= 8) {
 			treasureDistance = "hot";
@@ -208,4 +193,5 @@ public class GyroScript : MonoBehaviour {
 		}
 
 	}
+	*/
 }

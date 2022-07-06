@@ -6,8 +6,9 @@ using Newtonsoft.Json.Linq;
 
 public class Proximity : MonoBehaviour
 {
-    public GameObject Treasure;
+    public GameObject[] treasuries;
     public GameObject Player;
+    public GameObject closestTreasure;
     public float Kalt = 45.0f;
     public float Warm = 25.0f;
     public float Hot = 8.0f;
@@ -15,36 +16,57 @@ public class Proximity : MonoBehaviour
 
     public int zustand; 
 
-
     void Start()
     {
-        Treasure = GameObject.FindWithTag("Treasure");
+        //Treasure = GameObject.FindWithTag("Treasure");
         Player = GameObject.FindWithTag("Player");
+
+        if (treasuries == null)
+        {
+            treasuries = GameObject.FindGameObjectsWithTag("Treasure");
+        }
     }
 
     void Update()
     {
-        if (Treasure != null)
+        closestTreasure = FindClosestTreasure();
+        if(Vector3.Distance(Player.transform.position, closestTreasure.transform.position) < Kalt && Vector3.Distance(Player.transform.position, closestTreasure.transform.position) > Warm)
         {
-            if(Vector3.Distance(Player.transform.position, Treasure.transform.position) < Kalt && Vector3.Distance(Player.transform.position, Treasure.transform.position) > Warm)
-            {
-                zustand = 1;
-                Debug.Log("Kalt");
+            zustand = 1;
+		}
+        else if(Vector3.Distance(Player.transform.position, closestTreasure.transform.position) < Warm && Vector3.Distance(Player.transform.position, closestTreasure.transform.position) > Hot)
+        {
+            zustand = 2;
+        }
+        else if(Vector3.Distance(Player.transform.position, closestTreasure.transform.position) < Hot)
+        {
+            zustand = 3; 
+        }
+        else{
+            zustand = 0;
+        }
+ 
+    }
+
+    public GameObject FindClosestTreasure()
+    {
+        GameObject closest = null;
+        float distance = Mathf.Infinity;
+        Vector3 position = Player.transform.position;
+        foreach (GameObject treasure in treasuries)
+            if (treasure == null){
+            continue;
             }
-            else if(Vector3.Distance(Player.transform.position, Treasure.transform.position) < Warm && Vector3.Distance(Player.transform.position, Treasure.transform.position) > Hot)
+            else 
+        {
+            Vector3 diff = treasure.transform.position - position;
+            float curDistance = diff.sqrMagnitude;
+            if (curDistance < distance)
             {
-                zustand = 2;
-                Debug.Log("Warm");
-            }
-            else if(Vector3.Distance(Player.transform.position, Treasure.transform.position) < Hot)
-            {
-                zustand = 3; 
-                Debug.Log("Heiß");
-            }
-            else{
-                zustand = 0;
+                closest = treasure;
+                distance = curDistance;
             }
         }
-
+        return closest;
     }
 }
