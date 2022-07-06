@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NDream.AirConsole;
+using Newtonsoft.Json.Linq;
 
 public class Proximity : MonoBehaviour
 {
@@ -9,7 +11,9 @@ public class Proximity : MonoBehaviour
     public float Kalt = 45.0f;
     public float Warm = 25.0f;
     public float Hot = 8.0f;
+    public GyroScript gyro;
 
+    public int zustand; 
 
 
     void Start()
@@ -22,15 +26,18 @@ public class Proximity : MonoBehaviour
     {
         if(Vector3.Distance(Player.transform.position, Treasure.transform.position) < Kalt && Vector3.Distance(Player.transform.position, Treasure.transform.position) > Warm)
         {
-            Debug.Log("Kalt");
-        }
+            zustand = 1;
+		}
         else if(Vector3.Distance(Player.transform.position, Treasure.transform.position) < Warm && Vector3.Distance(Player.transform.position, Treasure.transform.position) > Hot)
         {
-            Debug.Log("Warm");
+            zustand = 2;
         }
         else if(Vector3.Distance(Player.transform.position, Treasure.transform.position) < Hot)
         {
-            Debug.Log("Hot");
+            zustand = 3; 
+        }
+        else{
+            zustand = 0;
         }
  
     }

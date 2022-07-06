@@ -44,12 +44,16 @@ public class GyroScript : MonoBehaviour {
 	public string treasureDistance;
 	public float distanceTreasurePlayer;
 
+	//working on Proximity
+	public Proximity proximity;
+
 	void Awake () {
 		AirConsole.instance.onMessage += OnMessage;
 		//access variable from gyroscope-controller.html
 		//find by gametag "treasure"
 		treasure = GameObject.FindGameObjectWithTag("Treasure");
-		InvokeRepeating ("vibrateMethode", 2f, 2f);
+		InvokeRepeating ("vibrateMethode", 3.3f, 3.3f);
+	
 	}
 
 	void OnMessage (int from, JToken data){
@@ -161,26 +165,26 @@ public class GyroScript : MonoBehaviour {
 	}
 
 	void vibrateMethode(){
-		if(treasureDistance == "cold"){
+		if(proximity.zustand == 1){
 		var message = new {
     	action = "vibrate_cold"
 		};
 		AirConsole.instance.Message(1, message);
 		Debug.Log(message);
 		};
-		if (treasureDistance == "warm"){
+		if (proximity.zustand == 2){
 			var message = new {
 			action = "vibrate_warm"
 		};
 		AirConsole.instance.Message(1, message);
 		Debug.Log(message);
 		}
-		if (treasureDistance == "hot"){
+		if (proximity.zustand == 3){
 			var message = new {
 			action = "vibrate_hot"
 		};
 				AirConsole.instance.Message(1, message);
-						Debug.Log(message);
+				Debug.Log(message);
 		}
 		Debug.Log(treasureDistance);
 		Debug.Log(distanceTreasurePlayer);
@@ -190,15 +194,17 @@ public class GyroScript : MonoBehaviour {
 	void calculateDistance(){
 
 		distanceTreasurePlayer = Vector3.Distance (playerCube.transform.position, treasure.transform.position);
-
-		if (distanceTreasurePlayer <= 10) {
+		if (distanceTreasurePlayer <= 8) {
 			treasureDistance = "hot";
 		} 
-		else if (distanceTreasurePlayer < 30 && distanceTreasurePlayer > 10) {
+		else if (distanceTreasurePlayer <= 16 && distanceTreasurePlayer > 8) {
 			treasureDistance = "warm";
 		}
-		else if (distanceTreasurePlayer > 30) {
+		else if (distanceTreasurePlayer > 16 && distanceTreasurePlayer <= 24) {
 			treasureDistance = "cold";
+		}
+		else if (distanceTreasurePlayer > 24) {
+			treasureDistance = "nothing";
 		}
 
 	}

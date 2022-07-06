@@ -208,20 +208,47 @@
       <style type=text/css>
       /* the style sheet dictates what our elements (buttons, backgrounds etc.) will look like. */
   
-      .button{
+      .button-camera{
         background: #3B3B3B;
         color: white;
         font-family: Arial;
-        font-size: 50px;
-        padding: 100px 10px 10px 10px;
         border: solid #1f1f1f 2px;
-        -webkit-border-radius: 11;
-        -moz-border-radius: 11;
-        border-radius: 10px;
-        width: 80%;
-        height: 25%;
-        margin: 0px 0px 15px 150px;
+        width: 100%;
+        height: 75%;
         text-align: center;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        font-size: 4rem;
+      }
+
+      .button-calibrate{
+        background: #3B3B3B;
+        color: white;
+        font-family: Arial;
+        border: solid #1f1f1f 2px;
+        width: 100%;
+        height: 25%;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .background{
+        background: #3B3B3B;
+        color: white;
+        font-family: Arial;
+        border: solid #1f1f1f 2px;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
       }
     
       .button-active{
@@ -246,29 +273,25 @@
           me.last_motion_event = {alpha:0, beta: 0, gamma: 0};
     
           me.airconsole.onMessage = function(from, data) {
-            //me.airconsole.vibrate(5000);
             if (data["action"] == "vibrate_cold") {
-              me.airconsole.vibrate(500)
+              me.airconsole.vibrate(500);
             }
             if (data["action"] == "vibrate_warm") {
-              me.airconsole.vibrate(400)
-              
+              me.airconsole.vibrate(350)
               // wait for a second before vibrating again
               setTimeout(function() {
-                me.airconsole.vibrate(400)
-              }, 500);
+                me.airconsole.vibrate(350)
+              }, 400);
             }
             if (data["action"] == "vibrate_hot") {
-              me.airconsole.vibrate(300)
-              
+              me.airconsole.vibrate(300);
               // wait for a second before vibrating again
               setTimeout(function() {
-                me.airconsole.vibrate(400)
+                me.airconsole.vibrate(300)
               }, 350);
-                            // wait for a second before vibrating again
-                            setTimeout(function() {
-                me.airconsole.vibrate(400)
-              }, 450);
+              setTimeout(function() {
+                me.airconsole.vibrate(300)
+              }, 700);
 
             }
           };
@@ -370,9 +393,12 @@
      
     </head>
     <body onload="window.app = new App()">
-        <div class="button" ontouchstart="window.app.calibrateButton()">Calibrate</div>
-        <div class="button" ontouchstart="window.app.vibrate()">Vibration</div>
-        <div class="button" ontouchstart="window.app.activateCameraButton()" ontouchend="window.app.activateCameraButton()">Camera</div>
+      <div id="background">
+        <div class="button-calibrate" ontouchstart="window.app.calibrateButton()">Kalibriere</div>
+        <div class="button-camera" ontouchstart="window.app.activateCameraButton()" ontouchend="window.app.activateCameraButton()">Kamera</div>
+      </div>
+
+
 
    
     </body>
