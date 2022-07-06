@@ -24,21 +24,27 @@ public class Proximity : MonoBehaviour
 
     void Update()
     {
-        if(Vector3.Distance(Player.transform.position, Treasure.transform.position) < Kalt && Vector3.Distance(Player.transform.position, Treasure.transform.position) > Warm)
+        if (Treasure != null)
         {
-            zustand = 1;
-		}
-        else if(Vector3.Distance(Player.transform.position, Treasure.transform.position) < Warm && Vector3.Distance(Player.transform.position, Treasure.transform.position) > Hot)
-        {
-            zustand = 2;
+            if(Vector3.Distance(Player.transform.position, Treasure.transform.position) < Kalt && Vector3.Distance(Player.transform.position, Treasure.transform.position) > Warm)
+            {
+                zustand = 1;
+                Debug.Log("Kalt");
+            }
+            else if(Vector3.Distance(Player.transform.position, Treasure.transform.position) < Warm && Vector3.Distance(Player.transform.position, Treasure.transform.position) > Hot)
+            {
+                zustand = 2;
+                Debug.Log("Warm");
+            }
+            else if(Vector3.Distance(Player.transform.position, Treasure.transform.position) < Hot)
+            {
+                zustand = 3; 
+                Debug.Log("Heiß");
+            }
+            else{
+                zustand = 0;
+            }
         }
-        else if(Vector3.Distance(Player.transform.position, Treasure.transform.position) < Hot)
-        {
-            zustand = 3; 
-        }
-        else{
-            zustand = 0;
-        }
- 
+
     }
 }

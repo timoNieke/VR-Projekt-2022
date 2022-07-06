@@ -16,10 +16,10 @@ public class ChestScript : MonoBehaviour
             AudioSource.PlayClipAtPoint(chestSound, transform.position);
             
             //deaktivert die Chest, jedoch werden die "Temperatur Logs" weitergezählt
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
 
             //zerstört das Objekt, jedoch wird für die nächsten Chests die "Temperatur Logs" nicht weitergezählt
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 }
