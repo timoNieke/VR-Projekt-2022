@@ -20,11 +20,8 @@ public class Proximity : MonoBehaviour
     {
         //Treasure = GameObject.FindWithTag("Treasure");
         Player = GameObject.FindWithTag("Player");
+        treasuries = GameObject.FindGameObjectsWithTag("Treasure");
 
-        if (treasuries == null)
-        {
-            treasuries = GameObject.FindGameObjectsWithTag("Treasure");
-        }
     }
 
     void Update()
